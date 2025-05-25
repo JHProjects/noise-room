@@ -13,7 +13,7 @@ function setupSocketHandlers(io) {
             if (!username || !password || !color) return
     
             // try Signing up
-            if (userAccounts[username]) {
+            if (userAccounts[username] || username == 'System') {
                 socket.emit("signup_error", "Username is already used by a different user.")
                 return
             }
