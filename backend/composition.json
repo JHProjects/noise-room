@@ -1,0 +1,9 @@
+{
+  "BPM": 80,
+  "tokensSpent": 805,
+  "amountForNextMeasure": 1250,
+  "beatsPerMeasure": 8,
+  "measures": 3,
+  "currentNoteIndex": 0,
+  "tracks": []
+}

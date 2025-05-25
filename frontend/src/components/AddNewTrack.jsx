@@ -6,6 +6,8 @@ import SampleSearchResult from './SampleSearchResult.jsx'
 import RecorderPopup from './RecorderPopup.jsx'
 import '../styles/AddNewTrack.css'
 
+const backendUrl = import.meta.env.VITE_BACKEND_URL || "http://localhost:3001";
+
 function AddNewTrack() {
     const { userData, setUserData } = useUser()
 
@@ -70,7 +72,7 @@ function AddNewTrack() {
 
         const controller = new AbortController()
 
-        fetch(`http://localhost:3001/api/samples/search?query=${encodeURIComponent(query)}`, {
+        fetch(`${backendUrl}/api/samples/search?query=${encodeURIComponent(query)}`, {
             signal: controller.signal
         })
             .then(res => res.json())

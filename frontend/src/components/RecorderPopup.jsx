@@ -4,6 +4,8 @@ import { useUser } from '../context/UserContext.jsx'
 import * as Tone from 'tone'
 import '../styles/RecorderPopup.css'
 
+const backendUrl = import.meta.env.VITE_BACKEND_URL || "http://localhost:3001"
+
 function RecorderPopup({ onClose, reward }) {
     const { userData, addTokens } = useUser()
 
@@ -112,7 +114,7 @@ function RecorderPopup({ onClose, reward }) {
         formData.append('name', audioName)
         formData.append('uploadedBy', userData?.username || 'anonymous')
 
-        const res = await fetch('http://localhost:3001/api/samples/upload', {
+        const res = await fetch(`${backendUrl}/api/samples/upload`, {
             method: 'POST',
             body: formData,
         })

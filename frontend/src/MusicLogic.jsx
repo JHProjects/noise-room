@@ -6,6 +6,8 @@ import { SequencerContext } from './context/SequencerContext.js'
 
 import App from './App.jsx'
 
+const backendUrl = import.meta.env.VITE_BACKEND_URL || "http://localhost:3001"
+
 const fftResolution = 64
 const fftCutoff = 7
 
@@ -95,7 +97,7 @@ function MusicLogic() {
                 const volume = new Tone.Volume(vol ?? 0)
                 const panner = new Tone.Panner(pan ?? 0)
                 const player = new Tone.Player({
-                    url: `http://localhost:3001${track.sampleUrl}`,
+                    url: `${backendUrl}${track.sampleUrl}`,
                     autostart: false
                 }).connect(volume)
 

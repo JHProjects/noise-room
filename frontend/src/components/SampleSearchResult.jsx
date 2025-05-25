@@ -1,7 +1,8 @@
 import { useState, useEffect, useRef } from 'react'
 import * as Tone from 'tone'
 
-const uploadsURL = 'http://localhost:3001/uploads/'
+const backendUrl = import.meta.env.VITE_BACKEND_URL || "http://localhost:3001"
+const uploadsURL = `${backendUrl}/uploads/`
 
 function SampleSearchResult({ sample, setPanelOpen, isUserAudio }) {
     const [isAudio, setIsAudio] = useState(false)
