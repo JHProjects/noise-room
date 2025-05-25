@@ -1,0 +1,354 @@
+.recorder-popup {
+    position: fixed;
+    z-index: 10;
+    margin-bottom: 8%;
+    width: 90%;
+    max-width: 660px;
+    animation: slide-from-top 300ms ease-in-out;
+}
+
+@keyframes slide-from-top {
+    from {
+        opacity: 0;
+        transform: translateY(-150px);
+    }
+    top {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.recorder-popup .container {
+    position: relative;
+    margin-inline: 23px;
+    margin-top: 16px;
+    margin-bottom: 16px;
+}
+
+
+.recorder-popup .columns {
+    display: flex;
+    justify-content: space-evenly;
+    gap: 30px;
+}
+
+.recorder-popup .close {
+    position: absolute;
+    top: 0; right: 0;
+    width: 28px;
+} 
+
+.recorder-popup h2 {
+    /* font-size: 20px; */
+    letter-spacing: 2%;
+    margin: 0;
+    margin-bottom: 30px;
+    font-weight: 500;
+} 
+
+.recorder-popup p {
+    margin: 0;
+    letter-spacing: 2%;
+    margin-bottom: 10px;
+    text-align: center;
+    color: var(--primary-grey-dark)
+} 
+
+.recorder-popup .left-side {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.recorder-popup .icon.mic {
+    background-image: url('../assets/icons/mic.svg');
+    /* background-color: var(--primary-dark); */
+    padding: 12px;
+    border-radius: 50%;
+    margin-left: -10px;
+    width: 100px;
+}
+
+.recorder-popup .right-side {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.recorder-popup .bottom {
+    position: absolute;
+    bottom: 0;
+    width: 100%
+}
+
+.record-button {
+    border-radius: 50%;
+    background-color: var(--primary-dark);
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 30px
+}
+
+.upload-button.no-name {
+    opacity: .2;
+}
+
+.icon.record {
+    background-image: url('../assets/icons/fiber_manual_record.svg');
+    margin: 0;
+    width: 30px
+}
+
+.icon.stop-record {
+    background-image: url('../assets/icons/stop_circle.svg');
+    margin: 0;
+    width: 30px
+}
+
+.recorder-popup audio {
+    width: 100%;
+    margin-top: 26px;
+}
+
+.record-animation {
+    width: 100%;
+    height: 10px;
+    background: linear-gradient(90deg, var(--primary), var(--primary-med), var(--secondary), var(--primary-grey-med), var(--primary), var(--primary-med));
+    background-size: 420% 100%;
+    animation: loadingAnim 2s infinite linear;
+    position: absolute;
+    bottom: 0;
+    border-radius: 10px;
+}
+
+@keyframes loadingAnim {
+  0% {
+    background-position: 0% 0%;
+  }
+  100% {
+    background-position: 100% 0%;
+  }
+}
+
+.recorder-popup button {
+    padding-inline: 22px;
+    padding-block: 6px;
+}
+
+.icon.spinner {
+    background-image: url('../assets/icons/progress_activity.svg');
+    width: 40px;
+    margin-bottom: 10px;
+    animation: spin 2s linear;
+}
+@keyframes spin {
+    from {transform: rotate(0deg)}
+    to {transform: rotate(360deg)}
+}
+
+.recorder-popup .upload-cloud {
+    background-image: url('../assets/icons/cloud_upload.svg');
+    margin: 0;
+    margin-right: 10px;
+    width: 22px;
+}
+
+.recorder-popup .cut {
+    background-image: url('../assets/icons/content_cut.svg');
+    margin: 0;
+    margin-right: 10px;
+    width: 22px;
+}
+
+.recorder-popup .audio-file {
+    background-image: url('../assets/icons/audio_file.svg');
+    margin: 0;
+    margin-right: 10px;
+    width: 22px;
+}
+
+.recorder-popup .replay {
+    background-image: url('../assets/icons/replay.svg');
+    margin: 0;
+    /* margin-right: 10px; */
+    width: 22px;
+}
+
+.after-record-buttons {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    flex-wrap: wrap;
+    transition: 250ms ease-in-out;
+}
+
+.after-record-buttons .upload-button.sample {
+    background: var(--primary-grey-med);
+    color: var(--primary-dark);
+}
+
+.after-record-buttons .upload-button.sample .icon {
+    background-image: url('../assets/icons/upload_2_dark.svg');
+}
+
+.after-record-buttons .upload-button.audio {
+    background: var(--secondary-med);
+    color: var(--secondary-very-dark);
+}
+
+.after-record-buttons .upload-button.audio .icon {
+    background-image: url('../assets/icons/upload_2_secondary-very-dark.svg');
+}
+
+
+.recorder-popup .unactive {
+    opacity: 0;
+    pointer-events: none;
+}
+
+
+.trimmer {
+    width: 100%;
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.trimmer.disabled {
+    opacity: 0;
+}
+
+.trimmer input {
+    margin: 0;
+    z-index: 2;
+}
+
+.waveform-trim-background {
+    background: rgb(17, 24, 26);
+    position: absolute;
+    bottom: 12px;
+    top: 12px;
+    left: 0;
+    z-index: -1;
+    opacity: .4;
+    border-radius: 10px;
+}
+
+.waveform-trim-background.end {
+    right: 0;
+    left: unset;
+}
+
+
+.waveform-bar-container {
+    display: flex;
+    width: 100%;
+    height: 100px;
+    justify-content: space-between;
+    align-items: center;
+    margin-block: -8px;
+    z-index: -6;
+    position: relative;
+}
+
+.waveform-bar-container .bar {
+    border-radius: 4px;
+    width: 2px;
+    height: 10px;
+    background-color: var(--primary-grey-dark);
+}
+
+.disabled {
+    pointer-events: none;
+    opacity: .3;
+}
+
+.audio-name-section {
+    text-align: left;
+    width: 100%;
+    margin-bottom: 20px;
+    display: flex;
+    gap: 6px;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.audio-name-section p {
+    margin-bottom: 0;
+    margin-right: 16px;
+    font-size: 16px;
+}
+.audio-name-section input {
+    flex-grow: 1;
+    min-width: 60px;
+}
+
+.audio-name-section input::placeholder {
+    opacity: .5;
+}
+
+.recorder-popup .recording-info {
+    position: absolute;
+    left: 0; right: 0;
+    bottom: -40px;
+    font-size: 14px;
+    margin-inline: auto;
+    text-align: center;
+    margin-top: 12px;
+    color: var(--primary-grey-dark)
+}
+
+.recorder-popup .recording-info span {
+    color: var(--primary-grey)
+}
+
+
+@media screen and (max-width: 879px) {
+    .recorder-popup {
+        margin-bottom: 3%;
+    }
+
+    .recorder-popup .container {
+        margin-top: 12px;
+        margin-inline: 16px;
+    }
+
+    .recorder-popup .left-side {
+        display: none;
+    }
+
+    .right-side p {
+        font-size: 16px;
+    }
+
+    .icon.close {
+        margin-top: 10px;
+    }
+
+    .recorder-popup h2 {
+        margin-top: -6px;
+        margin-bottom: 10px;
+    }
+
+    .record-button {
+        margin-bottom: 10px;
+
+    }
+
+    .trimmer {
+        margin-bottom: 12px;
+    }
+
+    .waveform-bar-container {
+        height: 50px;
+    }
+
+    .audio-name-section p {
+        font-size: 14px;
+    }
+}
+

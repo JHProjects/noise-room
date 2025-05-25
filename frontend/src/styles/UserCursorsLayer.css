@@ -1,0 +1,20 @@
+.user-cursors-layer {
+    position: fixed;
+    top: 0; bottom: 0;
+    left: 0; right: 0;
+    z-index: 8;
+    background: transparent;
+    pointer-events: none;
+}
+
+.user-cursor {
+    pointer-events: all;
+    position: absolute;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: var(--secondary-med);
+    transform: translate(-50%, -50%);
+    background-size: cover; 
+    background-position: center;
+}

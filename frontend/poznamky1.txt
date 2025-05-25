@@ -1,0 +1,33 @@
+Doplnit:
+* Přehrabat strukturu tracků, aby šly normálně stylizovat pomocí css
+* Synchronizované kurzory
+* Jméno při otevření
+* User profile
+* BPM set real time
+* panning tracků
+* adding of track
+* deleting of each track
+* rework of frontend sampler.js
+* users can upload own image
+* separate login/signup
+* make users have passwords
+* when opening searchbar, the audio of track gets lowered
+* adding/recording samples
+* adding of sample tracks
+* adding p5.js visuals by the sound output.
+* timer, kdy se rozšíří (in 1000 notes...)
+note token system
+    * gain tokens by recording
+    * remove by changing tempo
+    * remove by deleting track
+    * gain with each new comomposition section
+    * gain by other people interacting with your track (get the removed amount)
+    * remove by toggling a note (incrementaly... increase by like 2 times.. makes some changes later very much expensive, solve UI...)
+adding of melody/midi tracks
+fix track settings overlaping mobile menu overlay
+use cookies to log into a session
+make it all live, find hosting.!!!
+
+How the point distribution could work:
+Each user gets 1000 at start. Every smaple contributuion = +100
+every time user spends some amount on toggling notes and updating values, it gives that amount to the creator.

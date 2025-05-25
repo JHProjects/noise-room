@@ -1,0 +1,88 @@
+.user-info-panel {
+    font-style: normal;
+    position: absolute;
+    top: 60px;
+    right: 0;
+    width: 220px;
+    padding-block: 10px;
+    padding-inline: 16px;
+    animation: slide-in 250ms ease-in-out;
+    z-index: 7;
+}
+
+.user-data {
+    display: flex;
+    flex-direction: column;
+}
+
+.user-data .top-row {
+    display: flex; 
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 20px;
+}
+
+.user-icon {
+    width: 50px;
+    aspect-ratio: 1/1;
+    border-radius: 50%;
+}
+
+.change-picture-flex {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.change-picture-text {
+    font-size: 14px;
+    margin: 0;
+    cursor: pointer;
+    color: var(--primary-dark);
+    /* margin-bottom: 10px; */
+}
+
+.icon.edit {
+    background-image: url('../assets/icons/edit.svg');
+    width: 15px;
+    margin: 0;
+}
+
+.bottom-row {
+    color: var(--primary-grey-dark);
+}
+
+.bottom-row .user-title {
+    display: flex;
+    justify-content: space-between;
+    font-size: 18px;
+}
+
+.user-points {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    color: var(--primary-med);
+}
+
+.sample-count {
+    color:var(--primary-grey-dark);
+    gap: 2px;
+    margin-right: -1px;
+}
+
+.icon.eq {
+    background-image: url('../assets/icons/graphic_eq.svg');
+    width: 18px;
+}
+
+.logout-btn {
+    margin-top: 40px;
+    width: 100%;
+}
+
+.user-info-panel.mobile {
+    top: 140px;
+    right: 60px;
+    width: 60vw;
+}

@@ -1,0 +1,340 @@
+/* GLOBAL Styles */
+
+:root {
+  --primary: #4CEAFF;
+  --primary-med: #69B5BF;
+  --primary-med-transp: rgba(90, 133, 139, 0.25);
+  --primary-dark: #303E40;
+  --primary-dark-transp: #303E40;
+  --primary-very-dark: #192021;
+  --primary-grey-dark: #667D80;
+  --primary-grey-med: #8EB0B4;
+  --primary-grey: #C7D7D9;
+  
+  --secondary: #FFB84D;
+  --secondary-med: #BF9D69;
+  --secondary-med-transp: rgba(191, 157, 105, 0.15);
+  --secondary-dark: #807566;
+  --secondary-very-dark: #433c35;
+  --secondary-grey: #DDCEB9;
+  --secondary-grey-dark: #9c948a;
+
+  --tertiary: #FF7B4D;
+  --tertiary-med: #BF7F69;
+  --tertiary-med-transp: rgba(129, 93, 81, 0.15);
+  --tertiary-dark: #806D66;
+  --tertiary-grey: #E5CFC7;
+  --tertiary-grey-dark: #897c78;
+
+  --scrollbar-thumb: var(--primary-grey-dark);
+  --scrollbar-background: rgba(102, 125, 128, .4);
+  --scrollbar-thumb-hover: var(--primary-grey);
+  
+  --gradient-dark: linear-gradient(165deg, var(--primary-dark), var(--primary-very-dark));
+  --gradient-main: linear-gradient(165deg, var(--primary), #2E8C99);
+  --gradient-secondary: linear-gradient(165deg, #523a32, #382a26);
+  --gradient-tracks: linear-gradient(to right, #303e4091, rgba(0, 0, 0, .07));
+  --gradient-title: linear-gradient(to right, rgba(25, 32, 33, 0.2), rgba(25, 32, 33, 0.4));
+
+  --border-thin-top: 1px solid rgba(255, 255, 255, 0.248);
+  --border-thin-left: 1px solid rgba(255, 255, 255, 0.248);
+
+  --layout-margin-DT: 40px;
+  --layout-margin-top-DT: 30px;
+  --layout-margin-bottom-DT: 40px;
+  --layout-margin-tablet: 35px;
+  --layout-margin-top-tablet: 30px;
+  --layout-margin-bottom-tablet: 50px;
+  --layout-margin-M: 20px;
+  --layout-margin-top-M: 25px;
+  --layout-margin-bottom-M: 30px;
+
+  --main-font: "Familjen Grotesk", Avenir, Helvetica, Arial, sans-serif;
+
+
+  font-family: var(--main-font);
+  line-height: 1.45;
+  font-weight: 500;
+  letter-spacing: 2%;
+  font-size: 20px;
+
+  color-scheme: light dark;
+  color: var(--primary-grey);
+  background: #111619;
+  /* background: black; */
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100%;
+
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  overscroll-behavior-x: none;
+  overflow: hidden;
+}
+
+body {
+  background-image: url("../assets/noise_texture_256.png");
+  backdrop-filter: blur(200px);
+  height: calc(100dvh - var(--layout-margin-top-DT));
+ 
+  padding-inline: var(--layout-margin-DT);
+  padding-top: var(--layout-margin-top-DT);
+  margin: 0;
+
+  overflow: hidden;
+}
+
+h1 {
+  font-size: 52px;
+  letter-spacing: 0;
+  font-weight: 500;
+  padding: 0;
+  margin: 0;  
+}
+
+h3 {
+  font-size: 28px;
+  letter-spacing: 2%;
+  font-weight: 500;
+  padding: 0;
+  margin-top: 0;
+  margin-bottom: 16px;  
+  line-height: 110%;
+}
+
+.panel {
+  border-top: var(--border-thin-top);
+  border-left: var(--border-thin-left);
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.12);
+  border-radius: 10px;
+  background: linear-gradient(160deg, var(--primary-dark), rgba(0, 0, 0, .2));
+  backdrop-filter: blur(25px);
+}
+
+.modal-overlay {
+  position: fixed;
+  top: 0; bottom: 0;
+  left: 0; right: 0;
+  background: rgba(0, 0, 0, .3);
+  backdrop-filter: blur(35px);
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: modal 250ms ease-in-out;
+}
+
+@keyframes modal {
+  from {opacity: 0;}
+  to {opacity: 1;}
+}
+
+hr {
+  border: none;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.248);
+}
+
+button {
+  font-family: var(--main-font);
+  font-size: 20px;
+  font-weight: 500;
+  letter-spacing: 2%;
+  color: var(--primary-grey-med);
+  background: linear-gradient(160deg, var(--primary-dark), rgba(0, 0, 0, .2));
+  border: none;
+  border-radius: 5px;
+  padding-inline: 12px;
+  padding-block: 4px;
+  padding-bottom: 5px;
+  border-top: 1px solid rgba(255, 255, 255, 0.248);
+  border-left: 1px solid rgba(255, 255, 255, 0.248);
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.12);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  transition: ease-in-out 250ms;
+}
+
+button:hover {
+  cursor: pointer;
+  transform: scale(1.05);
+}
+
+button:focus,
+button:focus-visible {
+  border-top: 2px solid rgba(255, 255, 255, 0.248);
+  border-left: 2px solid rgba(255, 255, 255, 0.248);
+  border-right: 1px solid rgba(255, 255, 255, 0.248);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.248);
+}
+
+.button-secondary {
+  color: var(--primary-dark);
+  background: var(--primary-grey-dark);
+}
+
+input,
+input:focus {
+  background: transparent;
+  border: none;
+  font-family: unset;
+  font-weight: 500;
+  outline: none;
+  width: fit-content;
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type="text"], input[type="password"] {
+  color: var(--primary-grey);
+  font-size: 15px;
+  background: var(--gradient-dark);
+  border-radius: 8px;
+  padding: 8px 10px;
+  font-weight: 400;
+  border-top: 1px solid rgba(255, 255, 255, 0.248);
+  border-left: 1px solid rgba(255, 255, 255, 0.248);
+}
+
+/* Firefox */
+input[type="number"] {
+  -moz-appearance: textfield;
+  appearance: textfield;
+}
+
+/* Styling of the default sliders */
+/* ---------- generic range track ---------- */
+input[type='range'] {
+  appearance: none;
+  -webkit-appearance: none; /* removes default styling in Chrome/Safari */
+  width: 100%;
+  background: transparent;  /* let the custom track show through */
+}
+
+input[type='range']::-webkit-slider-runnable-track {
+  height: 6px;
+  background: var(--range-track, var(--primary-dark)); /* track color */
+  border-radius: 3px;
+}
+input[type='range']::-moz-range-track {
+  height: 6px;
+  background: var(--range-track, var(--primary-dark));
+  border-radius: 3px;
+}
+input[type='range']::-ms-track {
+  height: 6px;
+  background: var(--range-track, var(--primary-dark));
+  border-radius: 3px;
+  border: none;            /* IE/Edge fix */
+  color: transparent;      /* hides tick marks */
+}
+
+/* ---------- slider thumb ---------- */
+input[type='range']::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  height: 22px;
+  width: 10px;
+  border-radius: 8px;
+  border: none;
+  background: var(--range-thumb, var(--primary-grey-med));  /* thumb color */
+  cursor: pointer;
+  margin-top: -5px; /* centers thumb on track (track-height/2 - thumb-height/2) */
+}
+input[type='range']::-moz-range-thumb {
+  height: 22px;
+  width: 10px;
+  border-radius: 8px;
+  border-color: var(--primary-dark);
+  background: var(--range-thumb, var(--primary-grey-med));
+  cursor: pointer;
+}
+input[type='range']::-ms-thumb {
+  height: 22px;
+  width: 10px;
+  border-radius: 8px;
+  border-color: var(--primary-dark);
+  background: var(--range-thumb, var(--primary-grey-med));
+  cursor: pointer;
+}
+
+/* optional: focus style */
+input[type='range']:focus {
+  outline: none;
+}
+input[type='range']:focus::-webkit-slider-runnable-track {
+  background: var(--range-track-focus, var(--primary-grey));
+}
+
+
+i {
+  display: inline-block;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  min-width: 12px;
+  min-height: 12px;
+  aspect-ratio: 1/1;
+  margin: 10px;
+
+  transition: ease-in-out 200ms;
+
+  background-image: url("../assets/react.svg");
+}
+
+i:hover {
+  transform: scale(1.1);
+  cursor: pointer;
+}
+
+#root {
+  height: 100%;
+}
+
+.fullscreen {
+  position: fixed;
+  top: 0; bottom: 0;
+  left: 0; right: 0;
+  background-color: var(--gradient-dark);
+  backdrop-filter: blur(25px);
+  z-index: 6;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+@media screen and (max-width: 1099px) {
+    body {
+      height: calc(100dvh - var(--layout-margin-top-tablet));
+    
+      padding-inline: var(--layout-margin-tablet);
+      padding-top: var(--layout-margin-top-tablet);
+    }
+
+    h1 {
+      font-size: 46px;
+    }
+}
+
+@media screen and (max-width: 879px) {
+  body {
+    height: calc(100dvh - var(--layout-margin-top-M));
+  
+    padding-inline: var(--layout-margin-M);
+    padding-top: var(--layout-margin-top-M);
+  }
+
+  h1 {
+    font-size: 26px;
+  }
+}
