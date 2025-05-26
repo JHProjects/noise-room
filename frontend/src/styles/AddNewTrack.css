@@ -173,6 +173,15 @@ li.search-result:hover {
     cursor: grab;
 }
 
+.search-result .waveform .add-sample {
+    background-image: url('../assets/icons/add_2_grey.svg');
+    width: 22px;
+    margin: 0;
+    margin-top: 0;
+    margin-left: 2px;
+    cursor: pointer;
+}
+
 .preview-waveform {
    height: 32px;
    display: flex;

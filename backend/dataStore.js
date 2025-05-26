@@ -21,11 +21,11 @@ let userCursors = {}
 
 // Composition (initial creation)
 let composition = {
-    BPM: 80,
+    BPM: 100,
     tokensSpent: 0,
     amountForNextMeasure: 500,
     beatsPerMeasure: 8,
-    measures: 2,
+    measures: 1,
     currentNoteIndex: 0,
     tracks: []
 } 
@@ -48,7 +48,7 @@ function compositionCheckForNextLevel() {
     console.log('Composition spent tokens: ', composition.tokensSpent)
     console.log('Composition amount for next measure: ', composition.amountForNextMeasure)
     if (composition.tokensSpent < composition.amountForNextMeasure) return false
-    composition.amountForNextMeasure = parseInt(2.5 * composition.amountForNextMeasure)
+    composition.amountForNextMeasure = parseInt(2 * composition.amountForNextMeasure)
     composition.measures++
     expandComposition()
     saveComposition()

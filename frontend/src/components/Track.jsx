@@ -124,7 +124,7 @@ function Track({ track, index, currentStepIndex, scrollX }) {
     
 
     return (
-        <div className='track'>
+        <div className={`track ${track.type == "audio" ? "audio-track" : ""}`}>
             <div
                 ref={panelRef}
                 className={`panel track-context-settings ${isSettingsOpen ? '' : 'closed'}`}

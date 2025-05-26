@@ -23,7 +23,7 @@ function setupSocketHandlers(io) {
                 password,
                 color,
                 image,
-                tokens: 1000,
+                tokens: 600,
                 recordings: [],
                 mostUsed: null
             }
@@ -91,12 +91,30 @@ function setupSocketHandlers(io) {
         })
     
         // Add track
-        socket.on("add_track", (newTrack) => {
+        socket.on("add_track", ({newTrack, priceForAddingTrack}) => {
             if (!newTrack || !composition) return
-    
+            if (!priceForAddingTrack) {
+                console.log('no price for adding track passed.')
+                return
+            }
+
+            composition.tokensSpent += priceForAddingTrack
             composition.tracks.push(newTrack)
+
+            const goNextLevel = compositionCheckForNextLevel()
             io.emit("tracks_update", composition)
             saveComposition()
+
+            userAccounts[socket.username].tokens -= priceForAddingTrack
+            socket.emit("user_data_updated", userAccounts[socket.username])
+
+            if (goNextLevel) {
+                Object.values(userAccounts).forEach(user => {
+                    user.tokens += 1000
+                })
+                emitUserUpdates(io)
+            }
+            saveUserAccounts()
     
             const msg = `<span>${socket.username || socket.id}</span> placed <span>${newTrack.name}</span> into composition!`
             io.emit("chat_message", msg)

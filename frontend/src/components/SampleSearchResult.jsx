@@ -1,11 +1,26 @@
 import { useState, useEffect, useRef } from 'react'
 import * as Tone from 'tone'
+import { createAndAddTrack } from '../utils/compositionHelper.js'
+import { useSequencerCtx } from '../context/SequencerContext.js'
+import { socket } from '../socket.js'
+import { useUser } from '../context/UserContext.jsx'
 
 const backendUrl = import.meta.env.VITE_BACKEND_URL || "http://localhost:3001"
 const uploadsURL = `${backendUrl}/uploads/`
 
+const priceForAddingTrack = 150
+
+
 function SampleSearchResult({ sample, setPanelOpen, isUserAudio }) {
     const [isAudio, setIsAudio] = useState(false)
+    const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0
+
+    const {
+        composition,
+        setComposition
+    } = useSequencerCtx()
+
+    const { removeTokens } = useUser()
 
     // Effects
     useEffect(() => {
@@ -61,9 +76,8 @@ function SampleSearchResult({ sample, setPanelOpen, isUserAudio }) {
         icon.style.height = "22px"
         icon.style.marginLeft = "-6px"
 
-        let notePrice = -30
         const price = document.createElement("div")
-        price.innerHTML = `${notePrice} <i class="icon note"></i>`
+        price.innerHTML = `-${priceForAddingTrack} <i class="icon note"></i>`
         price.style.display = "flex"
         price.style.alignItems = "center"
         price.style.marginLeft = "10px"
@@ -92,6 +106,18 @@ function SampleSearchResult({ sample, setPanelOpen, isUserAudio }) {
     const handleDragEnd = () => {
         document.body.style.cursor = ''
     }
+
+    const addSampleToTimeline = () => {
+        const success = removeTokens(priceForAddingTrack)
+        if (!success) {
+            console.log("not enough money.")
+            return
+        }
+        createAndAddTrack({ sample, composition, setComposition, socket, priceForAddingTrack })
+        setPanelOpen(false)
+    }
+
+
 
     // Custom Clamp() function
     function clamp(value, min, max) {
@@ -126,7 +152,12 @@ function SampleSearchResult({ sample, setPanelOpen, isUserAudio }) {
                         />
                     ))}
                 </span>
-                <i className="icon add" />
+                {isTouchDevice && (
+                    <i className="icon add-sample" onClick={addSampleToTimeline} />
+                )}
+                {!isTouchDevice && (
+                    <i className="icon add" />
+                )}
             </div>
         </li>
     )

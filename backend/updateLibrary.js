@@ -1,9 +1,10 @@
 const fs = require('fs')
 const path = require('path')
+const mm = require('music-metadata')
 const { createWaveform, downsamplePeaks } = require('./helperFunctions')
 
 const uploadsDir = path.join(__dirname, 'uploads')
-const audioDir = path.join(uploadsDir, 'audio') // only this folder now
+const audioDir = path.join(uploadsDir, 'audio')
 const libraryPath = path.join(uploadsDir, 'library.json')
 
 async function syncLibrary() {
@@ -21,8 +22,20 @@ async function syncLibrary() {
             .map(async filename => {
                 if (libraryMap.has(filename)) return libraryMap.get(filename)
 
-                const type = 'sample'
                 const filePath = path.join(audioDir, filename)
+
+                // ⏱ Get duration in seconds
+                let duration = 0
+                try {
+                    const metadata = await mm.parseFile(filePath)
+                    duration = metadata.format.duration || 0
+                } catch (err) {
+                    console.warn(`⚠️ Could not read metadata for ${filename}`, err)
+                }
+
+                // Decide type based on duration (e.g. 8s threshold)
+                const type = duration > 5 ? 'audio' : 'sample'
+
                 const fullPeaks = await createWaveform(filePath)
                 const waveform = downsamplePeaks(fullPeaks, 18)
 
@@ -32,6 +45,7 @@ async function syncLibrary() {
                     uploadedBy: 'System',
                     createdAt: new Date().toISOString(),
                     type,
+                    duration,
                     waveform
                 }
             })

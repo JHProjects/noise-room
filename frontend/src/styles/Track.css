@@ -9,6 +9,7 @@
     position: relative;
 }
 
+
 .track-timeline {
     grid-column: 2 / 13;
     display: flex;
@@ -23,6 +24,10 @@
     box-shadow: 0 5px 20px rgba(0, 0, 0, 0.12);
     border-top-right-radius: 12px;
     border-bottom-right-radius: 12px;
+}
+
+.track.audio-track .track-timeline {
+    background: var(--gradient-tracks-audio);
 }
 
 .track-title {
@@ -49,6 +54,10 @@
     backdrop-filter: blur(20px);
 }
 
+.track.audio-track .track-title {
+    background: var(--secondary-med-transp);
+}
+
 
 .track-title > p {
     margin: 0;
@@ -57,6 +66,10 @@
     font-size: var(--title-size);
     pointer-events: none;
     user-select: none;
+}
+
+.track.audio-track .track-title > p {
+    color: var(--secondary-med)
 }
 
 .track-settings-icons {
@@ -73,10 +86,18 @@
     opacity: .7;
 }
 
+.audio-track .track-index {
+    color: var(--secondary-dark)
+}
+
 .settings {
     background-image: url('../assets/icons/equalizer.svg');
     width: 22px;
     margin-left: calc(var(--cell-width-semi) / 2.5);
+}
+
+.audio-track .settings {
+    background-image: url('../assets/icons/equalizer_secondary-med.svg');
 }
 
 .track-context-settings {
@@ -93,8 +114,31 @@
     min-width: 100px;
 }
 
+.audio-track .track-context-settings {
+    background: var(--secondary-med-transp);
+    color: var(--secondary-med);
+}
+
 .track-context-settings.closed {
     display: none;
+}
+
+.audio-track .track-context-settings p,
+.audio-track .track-context-settings button {
+    color: var(--secondary-med);
+}
+
+.audio-track .track-context-settings button {
+  background: var(--secondary-med-transp);
+}
+
+.audio-track .context-menu-index,
+.audio-track .track-settings > p.panning-title {
+    color: var(--secondary-dark)
+}
+
+.audio-track .track-context-settings .close {
+    background-image: url('../assets/icons/close-secondary-med.svg');
 }
 
 
@@ -149,12 +193,18 @@
     background-image: url('../assets/icons/delete_grey-dark.svg');
 }
 
+
 .track-delete.small-delete {
     width: 20px;
     margin: 0;
     opacity: .4;
     background-image: url('../assets/icons/delete_grey-dark.svg');
     margin-left: 5px;
+}
+
+.audio-track .track-delete.small-delete, 
+.audio-track .track-delete {
+    background-image: url('../assets/icons/delete_secondary-dark.svg');
 }
 
 .track-settings button {
@@ -271,6 +321,12 @@
     color: var(--tertiary-dark);
 }
 
+.audio-track .note-step {
+    background-color: var(--secondary-med);
+    outline-color: var(--secondary-dark);
+    color: var(--secondary-dark);
+}
+
 .odd .note-step .note-cost > div { 
     background-color: var(--tertiary-med);
 }
@@ -282,6 +338,12 @@
     color: var(--primary-grey-dark);
 }
 
+.audio-track .even .note-step {
+    background-color: var(--secondary-med);
+    outline-color: var(--secondary-grey-dark);
+    color: var(--secondary-grey-dark);
+}
+
 .note-step.on {
     outline-width: 0;
     outline-color: rgba(255, 255, 255, 0.248);
@@ -289,11 +351,23 @@
 }
 
 .note-step.on .note-cost > div { 
-    background-color: var(--primary-grey);
+    background-color: var(--secondary-grey);
+}
+
+.note-step.off .note-cost > div { 
+    background-color: var(--secondary-grey-dark);
+}
+
+.audio-track .note-step.on .note-cost > div { 
+    background-color: var(--secondary-grey);
 }
 
 .note-step.off {
     background: var(--primary-dark);
+}
+
+.audio-track .note-step.off {
+    background: var(--secondary-med-transp);
 }
 
 .note-step.semi-beat {
@@ -313,6 +387,10 @@
     transition: 150ms ease-out;
 }
 
+.audio-track .note-step.off > div {
+    background: var(--secondary-grey-dark);
+}
+
 .note-step.on > div {
     margin-bottom: 50px;
 }
@@ -328,8 +406,16 @@
     transition: all 5ms linear;
 }
 
+.audio-track .note-step.on.active {
+    background-color: var(--secondary);
+}
+
 .odd .note-step.on.active {
     background-color: var(--tertiary);
+}
+
+.audio-track .odd .note-step.on.active {
+    background-color: var(--secondary);
 }
 
 .delete-confirm-modal {

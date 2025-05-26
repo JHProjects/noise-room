@@ -1,5 +1,6 @@
 import { useEffect, useState, useRef } from 'react'
 import { socket } from '../socket.js'
+import { createAndAddTrack } from '../utils/compositionHelper.js'
 
 import TimeHead from './TimeHead.jsx'
 import Track from './Track.jsx'
@@ -9,6 +10,9 @@ import VFXbackground from './VFXbackground.jsx'
 import '../styles/Main.css'
 
 import { useSequencerCtx } from '../context/SequencerContext.js'
+import { useUser } from '../context/UserContext.jsx'
+
+const priceForAddingTrack = 150
 
 function Main() {
     // States
@@ -27,6 +31,8 @@ function Main() {
         totalTokensSpent
     } = useSequencerCtx()
 
+    const { removeTokens } = useUser()
+
 
 
     // Functions
@@ -34,37 +40,54 @@ function Main() {
         e.preventDefault()
         setSampleHovering(false)
 
+        const success = removeTokens(priceForAddingTrack)
+        if (!success) {
+            console.log("not enough money.")
+            return
+        }
+
         const data = e.dataTransfer.getData("application/json")
         if (!data) return
 
         const sample = JSON.parse(data)
-        let folder = 'audio'
-        const samplePath = `/uploads/${folder}/${sample.filename}`
 
-        const newTrack = {
-            id: crypto.randomUUID(),
-            name: sample.displayName,
-            type: sample.type,
-            sampleUrl: samplePath,
-            sampleUploadedBy: sample.uploadedBy,
-            pan: 0,
-            volume: 80,
-            notes: Array(composition.measures).fill().map(() =>
-                Array(composition.beatsPerMeasure).fill().map(() => ({ 
-                    on: false, 
-                    toggleCount: 0,
-                    noteCost: 1
-                }))
-            ),
-        }
+        createAndAddTrack({ sample, composition, setComposition, socket, priceForAddingTrack })
 
-        const updatedCompLocal = {
-            ...composition,
-            tracks: [...composition.tracks, newTrack],
-        }
-        setComposition(updatedCompLocal)
 
-        socket.emit("add_track", newTrack)
+        // e.preventDefault()
+        // setSampleHovering(false)
+
+        // const data = e.dataTransfer.getData("application/json")
+        // if (!data) return
+
+        // const sample = JSON.parse(data)
+        // let folder = 'audio'
+        // const samplePath = `/uploads/${folder}/${sample.filename}`
+
+        // const newTrack = {
+        //     id: crypto.randomUUID(),
+        //     name: sample.displayName,
+        //     type: sample.type,
+        //     sampleUrl: samplePath,
+        //     sampleUploadedBy: sample.uploadedBy,
+        //     pan: 0,
+        //     volume: 80,
+        //     notes: Array(composition.measures).fill().map(() =>
+        //         Array(composition.beatsPerMeasure).fill().map(() => ({ 
+        //             on: false, 
+        //             toggleCount: 0,
+        //             noteCost: 1
+        //         }))
+        //     ),
+        // }
+
+        // const updatedCompLocal = {
+        //     ...composition,
+        //     tracks: [...composition.tracks, newTrack],
+        // }
+        // setComposition(updatedCompLocal)
+
+        // socket.emit("add_track", newTrack)
     }
 
     const handleDragOver = (e) => {

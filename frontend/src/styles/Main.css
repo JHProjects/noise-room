@@ -410,7 +410,7 @@ main {
     }
 
     .note-step {
-        outline: 2px solid var(--primary-med);
+        /* outline: 2px solid var(--primary-med); */
         outline-offset: -12px;
     }
 
