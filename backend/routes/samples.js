@@ -36,6 +36,8 @@ router.post('/upload', upload.single('file'), async (req, res) => {
 
     const filePath = path.join(__dirname, '..', 'uploads', 'audio', file.filename)
     console.log(filePath)
+
+    
     const fullPeaks = await createWaveform(filePath)
     const waveform = downsamplePeaks(fullPeaks, 18)
 

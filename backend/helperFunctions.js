@@ -1,7 +1,7 @@
 const fs = require('fs')
 const path = require('path')
 const { execFile } = require('child_process')
-const ffmpegPath = require('ffmpeg-static')
+const ffmpegPath = 'ffmpeg'
 const { getAudioPeaks } = require('node-audio-peaks')
 const { firstValueFrom } = require('rxjs')
 

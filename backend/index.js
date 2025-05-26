@@ -56,6 +56,34 @@ try {
     console.error('Error in catch-all route:', err)
 }
 
+const testPath = path.join(__dirname, '..', 'uploads', 'audio')
+
+
+// Check if folder exists, create if not
+if (!fs.existsSync(testPath)) {
+  fs.mkdirSync(testPath, { recursive: true })
+  console.log('Created uploads/audio folder')
+}
+
+// Check write access tp a test folder
+fs.access(testPath, fs.constants.W_OK, (err) => {
+  if (err) {
+    console.error('No write permission to uploads/audio folder:', err)
+  } else {
+    console.log('uploads/audio folder is writable')
+  }
+})
+
+// check if server can use ffmpeg directly
+const { exec } = require('child_process');
+exec('ffmpeg -version', (err, stdout, stderr) => {
+  if (err) {
+    console.error('ffmpeg not found');
+  } else {
+    console.log('ffmpeg version:', stdout);
+  }
+})
+
 
 // Port
 server.listen(PORT, () => {

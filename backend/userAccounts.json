@@ -1,0 +1,39 @@
+{
+  "Admin": {
+    "username": "Admin",
+    "password": "Admin",
+    "color": "--secondary-med",
+    "image": "--secondary-med",
+    "tokens": 2200,
+    "recordings": [
+      {
+        "filename": "user-recording_1748217415849.webm",
+        "displayName": "ASas",
+        "uploadedBy": "Admin",
+        "createdAt": "2025-05-25T23:56:56.547Z",
+        "type": "sample",
+        "waveform": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      }
+    ],
+    "mostUsed": null
+  }
+}
