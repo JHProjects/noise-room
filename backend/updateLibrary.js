@@ -34,7 +34,7 @@ async function syncLibrary() {
                 }
 
                 // Decide type based on duration (e.g. 8s threshold)
-                const type = duration > 5 ? 'audio' : 'sample'
+                const type = duration > 7 ? 'audio' : 'sample'
 
                 const fullPeaks = await createWaveform(filePath)
                 const waveform = downsamplePeaks(fullPeaks, 18)
