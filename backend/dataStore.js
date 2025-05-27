@@ -48,8 +48,9 @@ function compositionCheckForNextLevel() {
     console.log('Composition spent tokens: ', composition.tokensSpent)
     console.log('Composition amount for next measure: ', composition.amountForNextMeasure)
     if (composition.tokensSpent < composition.amountForNextMeasure) return false
-    composition.amountForNextMeasure = parseInt(2 * composition.amountForNextMeasure)
-    composition.measures += 4
+    composition.amountForNextMeasure = parseInt(2.5 * composition.amountForNextMeasure)
+    if (composition.measures <= 2) {composition.measures += 2}
+    else {composition.measures += 4}
     expandComposition()
     saveComposition()
     return true
