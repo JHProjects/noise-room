@@ -19,7 +19,7 @@ function VFXbackground() {
             p.setup = () => {
                 p.createCanvas(p.windowWidth, p.windowHeight)
                     .style('z-index', '-8')
-                    // .style('filter', 'blur(20px)')
+                    .style('filter', 'blur(25px)')
                 p.noStroke()
                 p.ellipseMode(p.RADIUS)
                 p.rectMode(p.CENTER)
