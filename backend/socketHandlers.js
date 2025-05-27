@@ -23,7 +23,7 @@ function setupSocketHandlers(io) {
                 password,
                 color,
                 image,
-                tokens: 600,
+                tokens: 800,
                 recordings: [],
                 mostUsed: null
             }

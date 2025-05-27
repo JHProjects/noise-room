@@ -2,11 +2,11 @@ main {
     padding-inline: 10px;
     position: relative;
 
-    --cell-height: 58px;
-    --cell-width: 29px;
-    --cell-width-semi: 19px;
+    --cell-height: 55px;
+    --cell-width: 28px;
+    --cell-width-semi: 18px;
     --cell-gap:5px;
-    --cell-group-gap: 10px;
+    --cell-group-gap: 9px;
 
     --title-size: 20px;
     --title-container-width: 150px;

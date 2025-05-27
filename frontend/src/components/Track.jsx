@@ -15,7 +15,7 @@ function Track({ track, index, currentStepIndex, scrollX }) {
     const panelRef = useRef()
     const posRef = useRef({ x: 0, y: 0, offsetX: 0, offsetY: 0 })
 
-    const deletePrice = 400
+    const deletePrice = 300
 
     const toggleNote = (groupIndex, stepIndex, noteCost) => {
         const success = removeTokens(noteCost)

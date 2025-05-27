@@ -25,7 +25,7 @@ let composition = {
     tokensSpent: 0,
     amountForNextMeasure: 500,
     beatsPerMeasure: 8,
-    measures: 1,
+    measures: 4,
     currentNoteIndex: 0,
     tracks: []
 } 
@@ -49,7 +49,7 @@ function compositionCheckForNextLevel() {
     console.log('Composition amount for next measure: ', composition.amountForNextMeasure)
     if (composition.tokensSpent < composition.amountForNextMeasure) return false
     composition.amountForNextMeasure = parseInt(2 * composition.amountForNextMeasure)
-    composition.measures++
+    composition.measures += 4
     expandComposition()
     saveComposition()
     return true
